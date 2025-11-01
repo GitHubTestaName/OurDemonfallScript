@@ -2,7 +2,7 @@ local UIManager = {}
 
 function UIManager.init()
     -- Usa biblioteca de UI (você pode trocar se usar outra)
-    local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Orion/main/source"))()
+    local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/1F0T/OrionLib/main/source"))()
     
     local window = OrionLib:MakeWindow({
         Name = "💀 Demon Fall — Auto Farm",
