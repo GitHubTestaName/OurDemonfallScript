@@ -1,18 +1,20 @@
--- Main.lua
-local repoBase = "https://raw.githubusercontent.com/GitHubTestaName/OurDemonfallScript/main/"
+-- Main.lua — Ponto de entrada do script Demon Fall Farm
 
--- Carrega módulos principais
-local UIManager = loadstring(game:HttpGet(repoBase .. "UIManager.lua"))()
-local Hooks = loadstring(game:HttpGet(repoBase .. "Hooks.lua"))()
-local FarmCore = loadstring(game:HttpGet(repoBase .. "FarmCore.lua"))()
-local MobUtils = loadstring(game:HttpGet(repoBase .. "MobUtils.lua"))()
-local TrinketManager = loadstring(game:HttpGet(repoBase .. "TrinketManager.lua"))()
+local repo = "https://raw.githubusercontent.com/GitHubTestaName/OurDemonfallScript/main/"
 
--- Inicializa sistemas
-Hooks.init()
-UIManager.init()
-MobUtils.init()
-FarmCore.init()
-TrinketManager.init()
+-- Carrega os módulos externos
+getgenv().UIManager       = loadstring(game:HttpGet(repo .. "UIManager.lua"))()
+getgenv().Hooks           = loadstring(game:HttpGet(repo .. "Hooks.lua"))()
+getgenv().FarmCore        = loadstring(game:HttpGet(repo .. "FarmCore.lua"))()
+getgenv().TrinketManager  = loadstring(game:HttpGet(repo .. "TrinketManager.lua"))()
+getgenv().MobUtils        = loadstring(game:HttpGet(repo .. "MobUtils.lua"))()
 
-print("[✅] OurDemonfallScript carregado com sucesso!")
+-- Inicia os módulos
+getgenv().Hooks.init()
+getgenv().UIManager.init()
+getgenv().MobUtils.init()
+getgenv().FarmCore.init()
+getgenv().TrinketManager.init()
+
+-- Status
+print("✅ DemonFall Farm Script carregado com sucesso.")
