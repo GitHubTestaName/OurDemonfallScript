@@ -52,6 +52,8 @@ function FarmCore.init()
             lastAttack = tick()
         end
     end)
+
+    print("[✅] FarmCore iniciado")
 end
 
 return FarmCore
