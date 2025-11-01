@@ -1,9 +1,10 @@
 local UIManager = {}
 
 function UIManager.init()
-    -- Usa biblioteca de UI (você pode trocar se usar outra)
+    -- Carrega a biblioteca Orion
     local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/1F0T/OrionLib/main/source"))()
-    
+
+    -- Cria janela principal
     local window = OrionLib:MakeWindow({
         Name = "💀 Demon Fall — Auto Farm",
         HidePremium = false,
@@ -11,14 +12,13 @@ function UIManager.init()
         ConfigFolder = "DemonFallFarm"
     })
 
-    -- Página: Controle de Farm
+    -- Aba de Farm
     local farmTab = window:MakeTab({
         Name = "⚔️ Farm",
         Icon = "rbxassetid://6035199749",
         PremiumOnly = false
     })
 
-    farmTab:AddLabel("Configurações de Farm")
     farmTab:AddToggle({
         Name = "Ativar Farm",
         Default = false,
@@ -29,7 +29,7 @@ function UIManager.init()
         end
     })
 
-    -- Página: Configs Inteligentes
+    -- Aba Smart Config
     local smartTab = window:MakeTab({
         Name = "🧠 Smart Config",
         Icon = "rbxassetid://6031075938",
@@ -45,7 +45,7 @@ function UIManager.init()
         end
     })
 
-    -- Página: Outros
+    -- Aba Outros (Misc)
     local miscTab = window:MakeTab({
         Name = "📦 Outros",
         Icon = "rbxassetid://6031071050",
@@ -53,7 +53,7 @@ function UIManager.init()
     })
 
     miscTab:AddToggle({
-        Name = "🚫 Anti Fall Damage",
+        Name = "🚫 Anti Queda (Fall Damage)",
         Default = true,
         Save = false,
         Callback = function(value)
@@ -61,10 +61,9 @@ function UIManager.init()
         end
     })
 
-    miscTab:AddLabel("Mais proteções em breve...")
-
-    -- Iniciar UI
     OrionLib:Init()
+
+    print("[✅] UIManager iniciado")
 end
 
 return UIManager
