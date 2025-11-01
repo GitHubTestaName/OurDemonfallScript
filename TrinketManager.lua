@@ -1,12 +1,14 @@
 local TrinketManager = {}
 
--- Configuração
+-- Pasta onde os trinkets ficam no mapa
 local TRINKET_FOLDER = workspace:FindFirstChild("Debris") or workspace
+
+-- Nomes comuns de trinkets para identificar
 local TRINKET_NAMES = {
     "Trinket", "Money", "Ore", "RareItem"
 }
 
--- Retorna true se o objeto for um trinket
+-- Verifica se o objeto parece ser um trinket
 local function isTrinket(obj)
     for _, name in ipairs(TRINKET_NAMES) do
         if obj.Name:lower():find(name:lower()) then
@@ -16,7 +18,7 @@ local function isTrinket(obj)
     return false
 end
 
--- Retorna o trinket mais próximo
+-- Encontra o trinket mais próximo
 local function getClosestTrinket()
     local closest = nil
     local shortest = math.huge
@@ -37,7 +39,7 @@ local function getClosestTrinket()
     return closest
 end
 
--- Move o player até o trinket
+-- Move o jogador até o trinket
 local function moveToTrinket(trinket)
     if not trinket then return end
     local root = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
@@ -45,6 +47,7 @@ local function moveToTrinket(trinket)
     root.CFrame = trinket.CFrame + Vector3.new(0, 2, 0)
 end
 
+-- Loop de coleta passiva
 function TrinketManager.init()
     task.spawn(function()
         while task.wait(1) do
@@ -58,6 +61,8 @@ function TrinketManager.init()
             end
         end
     end)
+
+    print("[✅] TrinketManager iniciado")
 end
 
 return TrinketManager
